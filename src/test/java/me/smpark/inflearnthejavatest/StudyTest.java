@@ -1,6 +1,6 @@
 package me.smpark.inflearnthejavatest;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -17,9 +17,8 @@ class StudyTest {
 	@Test
 	@DisplayName("스터디 만들기 😁😁")
 	void create_new_study() {
-		Study study = new Study();
-		assertNotNull(study);
-		System.out.println("create");
+		Study actual = new Study(10);
+		assertThat(actual.getLimit()).isGreaterThan(0);
 	}
 	
 	@Test
