@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
@@ -23,6 +25,7 @@ import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@TestInstance(Lifecycle.PER_CLASS)
 class StudyTest {
 	
 	int value = 1;
@@ -77,12 +80,12 @@ class StudyTest {
 	}
 	
 	@BeforeAll
-	static void beforeAll() {
+	void beforeAll() {
 		System.out.println("before all");
 	}
 	
 	@AfterAll
-	static void afterAll() {
+	void afterAll() {
 		System.out.println("after all");
 	}
 	
